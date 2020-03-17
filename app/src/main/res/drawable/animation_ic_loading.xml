@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solution for setting different placeholder size
+without affection the main image using <inset> -> https://github.com/bumptech/glide/issues/1046-->
+
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="100dp">
+    <animated-rotate
+        android:drawable="@drawable/ic_loading"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+</inset>
