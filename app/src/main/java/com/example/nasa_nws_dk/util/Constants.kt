@@ -7,4 +7,5 @@ object Constants {
     const val APOD_URL = BASE_URL + "planetary/apod"
     const val NEO_FEED_URL = "neo/rest/v1/feed"
     const val API_KEY = "QgewI4rkf9Cq0WK9bFJAc0U554QZdOlZcBlIaSET"
+    const val WORK_NAME = "asteroids_download"
 }
