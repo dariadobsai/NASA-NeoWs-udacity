@@ -1,6 +1,7 @@
 package com.example.nasa_nws_dk.main.viewModels
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,12 +10,13 @@ import com.example.nasa_nws_dk.data.getDatabase
 import com.example.nasa_nws_dk.models.PictureOfDay
 import com.example.nasa_nws_dk.repo.AsteroidRepository
 import com.example.nasa_nws_dk.util.Constants.API_KEY
+import com.example.nasa_nws_dk.util.isOnline
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) :
+class MainViewModel(application: Application, context: Context) :
     AndroidViewModel(application) {
 
     private var viewModelJob = Job()
@@ -36,38 +38,15 @@ class MainViewModel(application: Application) :
         get() = _errorMessage
 
     init {
-        loadPictureOfTheDay()
-
-        coroutineScope.launch {
-            asteroidRepository.refreshAsteroids()
+        if (isOnline(context)) {
+            loadPictureOfTheDay()
+            coroutineScope.launch {
+                asteroidRepository.refreshAsteroids()
+            }
         }
     }
 
     val asteroids = asteroidRepository.asteroids
-
-    /*fun loadAsteroidsData() {
-        coroutineScope.launch {
-
-            val getAsteroidDeferred = AsteroidApi.retrofitService.getAsteroids(
-                LocalDate.now(),
-                LocalDate.now().plusDays(DEFAULT_END_DATE_DAYS),
-                API_KEY
-            )
-
-            val result = getAsteroidDeferred.await()
-
-            try {
-                //_errorMessage.value = "Retrieved: ${result.nearEarthObjects.size} asteroids"
-                _asteroidResponse.value = result.nearEarthObjects.flatMap {
-                    it.value
-                }.sortedBy { it.closeApproachDate[0].closeApproachDate }
-
-            } catch (t: Throwable) {
-                _errorMessage.value = t.message
-
-            }
-        }
-    }*/
 
     /*
       fun scheduleWork() {

@@ -24,7 +24,7 @@ class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
 
     private val mainViewModel: MainViewModel by lazy {
         val activity = requireNotNull(this.activity)
-        ViewModelProvider(this, AsteroidViewModelFactory(activity.application))
+        ViewModelProvider(this, AsteroidViewModelFactory(activity.application, this.requireContext()))
             .get(MainViewModel::class.java)
     }
 

@@ -14,8 +14,13 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // Solution for "Incremental annotation processing requested..." -> https://stackoverflow.com/questions/57670510/how-to-get-rid-of-incremental-annotation-processing-requested-warning
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.incremental":"true"]
+            }
+        }
     }
 
     buildTypes {
@@ -84,8 +89,8 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
-    // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$room_version"
+    /*// Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"*/
 
     // WorkManager
     implementation "androidx.work:work-runtime-ktx:$work_version"

@@ -1,7 +1,12 @@
 package com.example.nasa_nws_dk.models
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-data class PictureOfDay(@Json(name = "media_type")
-                        val mediaType: String, val title: String,
-                        val url: String)
+@Parcelize
+data class PictureOfDay(
+    @Json(name = "media_type")
+    val mediaType: String, val title: String,
+    val url: String
+) : Parcelable

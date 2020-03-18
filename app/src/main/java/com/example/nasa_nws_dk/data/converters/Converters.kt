@@ -4,25 +4,25 @@ import androidx.room.TypeConverter
 import com.example.nasa_nws_dk.models.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.Moshi
 
 private val gson = Gson()
 
-object CloseApproachDataConverter {
+private val moshi = Moshi.Builder().build()
+
+class Converters {
 
     @TypeConverter
-    fun toCloseApproachDataString(str: String): List<CloseApproachData> {
+    fun toCloseApproachDataString(str: String): List<CloseApproachData>? {
         val type = object : TypeToken<List<CloseApproachData>>() {}.type
         return gson.fromJson(str, type)
     }
 
     @TypeConverter
     fun toCloseApproachDataList(list: List<CloseApproachData>): String {
-        val type = object : TypeToken<List<CloseApproachData>>() {}.type
-        return gson.toJson(list, type)
+        return gson.toJson(list)
     }
-}
 
-object RelativeVelocityConverter {
 
     @TypeConverter
     fun stringToDouble(data: String): Double {
@@ -36,9 +36,7 @@ object RelativeVelocityConverter {
     fun doubleToString(d: Double): String {
         return gson.toJson(d)
     }
-}
 
-object MissDistanceConverter {
 
     @TypeConverter
     fun stringToDouble(data: String?): MissDistance {
@@ -51,35 +49,31 @@ object MissDistanceConverter {
     fun doubleToString(someObjects: MissDistance): String {
         return gson.toJson(someObjects)
     }
-}
 
-object EstimatedDiameterConverter {
 
     @TypeConverter
     fun stringToJson(data: String?): EstimatedDiameter {
-        val doubleType = object : TypeToken<RelativeVelocity>() {}.type
+        val stringType = object : TypeToken<EstimatedDiameter>() {}.type
 
-        return gson.fromJson<EstimatedDiameter>(data, doubleType)
+        return gson.fromJson<EstimatedDiameter>(data, stringType)
     }
 
     @TypeConverter
-    fun jsonToString(someObjects: EstimatedDiameter): String {
-        return gson.toJson(someObjects)
+    fun jsonToString(estimatedDiameter: EstimatedDiameter): String {
+        return gson.toJson(estimatedDiameter)
     }
-}
 
-object KilometersConverter {
 
     @TypeConverter
-    fun stringToDouble(data: String?): Kilometers {
-        val doubleType = object : TypeToken<RelativeVelocity>() {}.type
+    fun stringToDoubleKm(data: String?): Kilometers {
+        val doubleType = object : TypeToken<Kilometers>() {}.type
 
         return gson.fromJson<Kilometers>(data, doubleType)
     }
 
     @TypeConverter
-    fun doubleToString(someObjects: Kilometers): String {
-        return gson.toJson(someObjects)
+    fun doubleToString(kilometers: Kilometers): String {
+        return gson.toJson(kilometers)
     }
 }
 

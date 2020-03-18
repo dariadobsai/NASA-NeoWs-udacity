@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.nasa_nws_dk.data.AsteroidDatabase.Companion.DB_NAME
+import com.example.nasa_nws_dk.data.converters.Converters
 import com.example.nasa_nws_dk.models.Asteroid
 
 @Dao
@@ -20,6 +21,7 @@ interface AsteroidDao {
 }
 
 @Database(entities = [Asteroid::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AsteroidDatabase : RoomDatabase() {
 
     abstract val asteroidDao: AsteroidDao

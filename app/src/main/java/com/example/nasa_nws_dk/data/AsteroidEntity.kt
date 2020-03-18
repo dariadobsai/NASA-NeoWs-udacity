@@ -3,7 +3,6 @@ package com.example.nasa_nws_dk.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.nasa_nws_dk.data.converters.CloseApproachDataConverter
 import com.example.nasa_nws_dk.models.Asteroid
 import com.example.nasa_nws_dk.models.CloseApproachData
 import com.example.nasa_nws_dk.models.EstimatedDiameter
