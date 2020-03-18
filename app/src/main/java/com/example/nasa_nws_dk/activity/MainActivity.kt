@@ -1,4 +1,4 @@
-package com.example.nasa_nws_dk
+package com.example.nasa_nws_dk.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.nasa_nws_dk.R
 import com.example.nasa_nws_dk.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
