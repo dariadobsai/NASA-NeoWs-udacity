@@ -24,7 +24,7 @@ fun TextView.bindTextViewToDisplayAsteroidName(asteroid: Asteroid) {
 
 @BindingAdapter("date")
 fun TextView.bindTextViewToDisplayAsteroidDate(asteroid: Asteroid) {
-    this.text = asteroid.getCloseApproachDataObject().closeApproachDate
+    this.text = asteroid.getCloseApproachDataObject().approachDate
 }
 
 
@@ -72,5 +72,5 @@ fun TextView.bindTextViewToDisplayDistanceFromEarth(asteroid: Asteroid) {
 }
 
 private fun Asteroid.getCloseApproachDataObject(): CloseApproachData {
-    return this.closeApproachDate[0]
+    return this.closeApproachData[0]
 }

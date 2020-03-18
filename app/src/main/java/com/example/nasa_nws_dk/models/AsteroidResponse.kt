@@ -17,7 +17,7 @@ fun AsteroidResponse.asDatabaseModel(): Array<Asteroid> {
         Asteroid(
             id = it.id,
             name = it.name,
-            closeApproachDate = it.closeApproachDate,
+            closeApproachData = it.closeApproachData,
             absoluteMagnitude = it.absoluteMagnitude,
             estimatedDiameter = it.estimatedDiameter,
             isPotentiallyHazardous = it.isPotentiallyHazardous

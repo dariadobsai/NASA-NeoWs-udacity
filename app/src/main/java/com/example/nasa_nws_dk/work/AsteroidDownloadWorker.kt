@@ -15,7 +15,6 @@ class AsteroidDownloadWorker(context: Context, parameters: WorkerParameters) :
 
         return try {
             repository.refreshAsteroids()
-            Timber.v("works")
             Result.success()
 
         } catch (e: Exception) {

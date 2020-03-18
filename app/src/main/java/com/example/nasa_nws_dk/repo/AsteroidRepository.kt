@@ -17,6 +17,19 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
 
     val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getAll()) {
         it.asDomainModel()
+
+        /**
+         * The detailed description about this commented line code below be found in the AsteroidDatabase class.
+         *
+         * 1. Sorting steroids in the descending order by date
+         * 2. Call asDomainModel() on the sorted list
+         *
+         *   val sorted = sortedBy {
+         *       it.closeApproachData[0].approachDate
+         *   }
+         *   sorted.asDomainModel()
+         *
+         */
     }
 
     suspend fun refreshAsteroids() {
@@ -26,10 +39,6 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
                 LocalDate.now().plusDays(Constants.DEFAULT_END_DATE_DAYS),
                 API_KEY
             ).await()
-
-            /* val response = asteroids.nearEarthObjects.flatMap {
-                 it.value
-             }.sortedBy { it.closeApproachDate[0].closeApproachDate }*/
 
             database.asteroidDao.insertAll(*asteroids.asDatabaseModel())
         }
