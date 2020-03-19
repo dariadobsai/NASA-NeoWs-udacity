@@ -69,6 +69,8 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
 
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_extensions_version"
+
     // Moshi
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"

@@ -16,7 +16,6 @@ import com.example.nasa_nws_dk.main.viewModels.AsteroidViewModelFactory
 import com.example.nasa_nws_dk.main.viewModels.MainViewModel
 import com.example.nasa_nws_dk.models.Asteroid
 
-
 class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
 
     lateinit var binding: FragmentMainBinding
@@ -24,7 +23,10 @@ class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
 
     private val mainViewModel: MainViewModel by lazy {
         val activity = requireNotNull(this.activity)
-        ViewModelProvider(this, AsteroidViewModelFactory(activity.application, this.requireContext()))
+        ViewModelProvider(
+            this,
+            AsteroidViewModelFactory(activity.application, this.requireContext())
+        )
             .get(MainViewModel::class.java)
     }
 
@@ -42,20 +44,14 @@ class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
 
         populateAsteroidList()
 
-        // setHasOptionsMenu(true)
-
         return binding.root
     }
 
-    // TODO: add progress bar
     private fun populateAsteroidList() {
         asteroidsAdapter = AsteroidsAdapter(this)
 
         mainViewModel.asteroids.observe(viewLifecycleOwner, Observer { asteroids ->
-            if (asteroids.isNotEmpty()) {
-                asteroidsAdapter.setAsteroidList(asteroids)
-            } else
-                return@Observer
+            asteroidsAdapter.setAsteroidList(asteroids)
         })
 
 
@@ -75,13 +71,5 @@ class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
         val action = MainFragmentDirections.actionShowDetail(asteroid)
         findNavController().navigate(action)
     }
-
-    /*  override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-          inflater.inflate(R.menu.main_overflow_menu, menu)
-          super.onCreateOptionsMenu(menu, inflater)
-      }
-
-      override fun onOptionsItemSelected(item: MenuItem): Boolean {
-          return true
-      }*/
 }
+
