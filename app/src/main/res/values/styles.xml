@@ -1,11 +1,44 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DetailLabelStyle">
+        <item name="android:layout_marginTop">@dimen/margin_base</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailValueStyle">
+        <item name="android:layout_marginTop">@dimen/detail_sub_label_margin_top</item>
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+
+    <style name="ImageOfTheDayTitleStyle">
+        <item name="android:background">@color/image_title_bg_color</item>
+        <item name="android:padding">@dimen/padding_base</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/image_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ListLabelStyle">
+        <item name="android:layout_marginTop">@dimen/list_label_text_margin_top</item>
+        <item name="android:textColor">@color/list_label_color</item>
+        <item name="android:textSize">@dimen/list_label_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ListValueStyle">
+        <item name="android:layout_marginTop">@dimen/list_value_text_margin_top</item>
+        <item name="android:textSize">@dimen/list_value_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/list_label_color</item>
     </style>
 
 </resources>

@@ -31,7 +31,12 @@ class MainViewModel(application: Application, context: Context) :
     val apod: LiveData<PictureOfDay>
         get() = _apod
 
+    private val _isOnline = MutableLiveData<Boolean>()
+    val isOnline: LiveData<Boolean>
+        get() = _isOnline
+
     private val networkObserver = Observer<Boolean> {
+        _isOnline.value = it
         if (it == true) {
             loadPictureOfTheDay()
             viewModelScope.launch {
@@ -45,6 +50,7 @@ class MainViewModel(application: Application, context: Context) :
     }
 
     val asteroids = asteroidRepository.asteroids
+    val todayAsteroids = asteroidRepository.todayAsteroids
 
     private fun loadPictureOfTheDay() {
         viewModelScope.launch {
@@ -61,7 +67,7 @@ class MainViewModel(application: Application, context: Context) :
 
     override fun onCleared() {
         super.onCleared()
-        networkConnectivity.removeObserver(networkObserver)
+        networkConnectivity.removeObserver(networkObserver) // remove the observer
         viewModelJob.cancel()
     }
 }

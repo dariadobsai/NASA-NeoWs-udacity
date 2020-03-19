@@ -3,8 +3,6 @@ package com.example.nasa_nws_dk.data
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.nasa_nws_dk.data.AsteroidDatabase.Companion.DB_NAME
 import com.example.nasa_nws_dk.data.converters.Converters
 import com.example.nasa_nws_dk.models.Asteroid
@@ -39,7 +37,7 @@ interface AsteroidDao {
     fun delete(asteroid: Asteroid)
 }
 
-@Database(entities = [Asteroid::class], version = 2, exportSchema = false)
+@Database(entities = [Asteroid::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AsteroidDatabase : RoomDatabase() {
 
@@ -58,7 +56,7 @@ fun getDatabase(context: Context): AsteroidDatabase {
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 AsteroidDatabase::class.java, DB_NAME
-            ).addMigrations(MIGRATION_1_2)
+            ).fallbackToDestructiveMigration()
                 .build()
         }
     }
@@ -66,9 +64,4 @@ fun getDatabase(context: Context): AsteroidDatabase {
     return INSTANCE
 }
 
-val MIGRATION_1_2 = object : Migration(1, 2) {
-    override fun migrate(database: SupportSQLiteDatabase) {
-        database.execSQL("DROP TABLE 'asteroids'")
-    }
-}
 

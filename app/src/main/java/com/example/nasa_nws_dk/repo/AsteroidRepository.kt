@@ -15,21 +15,33 @@ import java.time.LocalDate
 
 class AsteroidRepository(private val database: AsteroidDatabase) {
 
-    val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidDao.getAll()) {
-        it.asDomainModel()
+    val asteroids: LiveData<List<Asteroid>> =
+        Transformations.map(database.asteroidDao.getAll()) { asteroids ->
+            val filtered = asteroids.filter {
+                it.closeApproachData[0].approachDate >= LocalDate.now().toString() // filter asteroids to load always only from today
+            }
+            filtered.asDomainModel()
 
-        /**
-         * The detailed description about this commented line code below be found in the AsteroidDatabase class.
-         *
-         * 1. Sorting steroids in the descending order by date
-         * 2. Call asDomainModel() on the sorted list
-         *
-         *   val sorted = sortedBy {
-         *       it.closeApproachData[0].approachDate
-         *   }
-         *   sorted.asDomainModel()
-         *
-         */
+            /**
+             * The detailed description about this commented line code below be found in the AsteroidDatabase class.
+             *
+             * 1. Sorting steroids in the descending order by date
+             * 2. Call asDomainModel() on the sorted list
+             *
+             *   val sorted = it.sortedBy {
+             *       it.closeApproachData[0].approachDate
+             *   }
+             *   sorted.asDomainModel()
+             *
+             */
+        }
+
+
+    // Filter asteroids to display based on the today's date
+    val todayAsteroids = Transformations.map(asteroids) { todayAsteroids ->
+        todayAsteroids.filter {
+            it.closeApproachData[0].approachDate == LocalDate.now().toString()
+        }
     }
 
     suspend fun refreshAsteroids() {

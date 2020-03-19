@@ -22,6 +22,10 @@ data class Asteroid(
     val isPotentiallyHazardous: Boolean
 ) : Parcelable {
 
+    /*
+     Empty Java-like constructor, for a better visualization.
+     It was created because Room didn't work for a while with TypeConverters properly and missing constructor could be one of the potential reason of the crash
+    */
     constructor() : this(
         0,
         "",
@@ -35,13 +39,13 @@ data class Asteroid(
 
 @Parcelize
 data class EstimatedDiameter(
-    val kilometers: Kilometers = Kilometers(0.0)
+    val kilometers: Kilometers
 ) : Parcelable
 
 @Parcelize
 data class Kilometers(
     @Json(name = "estimated_diameter_max")
-    val estimatedDiameterMax: Double = 0.0
+    val estimatedDiameterMax: Double
 ) : Parcelable
 
 @Parcelize
@@ -49,20 +53,20 @@ data class CloseApproachData(
     @Json(name = "close_approach_date")
     val approachDate: String = "",
     @Json(name = "relative_velocity")
-    val relativeVelocity: RelativeVelocity = RelativeVelocity(0.0),
+    val relativeVelocity: RelativeVelocity,
     @Json(name = "miss_distance")
-    val missDistance: MissDistance = MissDistance(0.0)
+    val missDistance: MissDistance
 ) : Parcelable
 
 @Parcelize
 data class RelativeVelocity(
     @Json(name = "kilometers_per_second")
-    val kmPerSec: Double = 0.0
+    val kmPerSec: Double
 ) : Parcelable
 
 @Parcelize
 data class MissDistance(
-    val astronomical: Double = 0.0
+    val astronomical: Double
 ) : Parcelable
 
 fun List<Asteroid>.asDomainModel(): List<Asteroid> {

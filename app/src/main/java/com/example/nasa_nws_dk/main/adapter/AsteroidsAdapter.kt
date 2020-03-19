@@ -27,7 +27,6 @@ class AsteroidsAdapter(val clickListener: ClickListener) :
         )
 
         return AsteroidViewHolder(binding)
-        //return AsteroidViewHolder(ListAsteroidsBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     interface ClickListener {
@@ -37,18 +36,6 @@ class AsteroidsAdapter(val clickListener: ClickListener) :
     override fun getItemCount(): Int {
         return asteroids.size
     }
-
-    // Piece of code form Udacity course content ->
-    // https://github.com/udacity/andfun-kotlin-mars-real-estate/blob/Step.05-Solution-Displaying-a-Grid-of-Internet-Images/app/src/main/java/com/example/android/marsrealestate/overview/PhotoGridAdapter.kt
-    /*  companion object DiffCallback : DiffUtil.ItemCallback<Asteroid>() {
-          override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-              return oldItem === newItem
-          }
-
-          override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-              return oldItem.id == newItem.id
-          }
-      }*/
 
     fun setAsteroidList(asteroids: List<Asteroid>) {
         if (this.asteroids !== asteroids)
@@ -79,20 +66,4 @@ class AsteroidsAdapter(val clickListener: ClickListener) :
             clickListener.onAsteroidClick(asteroids[adapterPosition])
         }
     }
-
-
-    /**
-     * Allows the RecyclerView to determine which items have changed when the [List] of [MarsProperty]
-     * has been updated.
-     *//*
-    companion object DiffCallback : DiffUtil.ItemCallback<MarsProperty>() {
-        override fun areItemsTheSame(oldItem: MarsProperty, newItem: MarsProperty): Boolean {
-            return oldItem === newItem
-        }
-
-        override fun areContentsTheSame(oldItem: MarsProperty, newItem: MarsProperty): Boolean {
-            return oldItem.id == newItem.id
-        }
-    }
-    }*/
 }

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.nasa_nws_dk.R
 import com.example.nasa_nws_dk.databinding.FragmentDetailBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailFragment : Fragment() {
 
@@ -21,11 +20,9 @@ class DetailFragment : Fragment() {
 
         binding = FragmentDetailBinding.inflate(inflater)
 
+        // Receiver Asteroid passed from the MainFragment
         val asteroid = DetailFragmentArgs.fromBundle(arguments!!).asteroid
         binding.asteroid = asteroid
-
-        // Set toolbar title to the selected asteroid name
-        activity?.toolbar?.title = asteroid.name
 
         binding.helpButton.setOnClickListener {
             displayAstronomicalUnitExplanationDialog()

@@ -19,7 +19,7 @@
         <FrameLayout
             android:id="@+id/activity_main_image_of_the_day_layout"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="@dimen/image_frame_layout_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,21 +31,17 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/desc_picture_of_the_day"
                 android:scaleType="centerCrop"
-                app:image="@{viewModel.apod.url}"
-                app:imageTitle="@{viewModel.apod.title}"
-                tools:srcCompat="@drawable/placeholder_picture_of_day" />
+                app:image="@{viewModel.apod}"
+                app:imageTitle="@{viewModel.apod}"
+                tools:srcCompat="@drawable/empty_picture_of_day" />
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/ImageOfTheDayTitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="#55010613"
-                android:padding="16dp"
-                android:text="@string/image_of_the_day"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:text="@string/image_of_the_day" />
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView

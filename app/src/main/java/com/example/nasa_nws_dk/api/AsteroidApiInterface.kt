@@ -5,7 +5,6 @@ import com.example.nasa_nws_dk.models.PictureOfDay
 import com.example.nasa_nws_dk.util.Constants
 import com.example.nasa_nws_dk.util.Constants.APOD_URL
 import com.example.nasa_nws_dk.util.Constants.NEO_FEED_URL
-import com.example.nasa_nws_dk.util.DateAdapter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -34,7 +33,6 @@ interface AsteroidApiInterface {
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
-    .add(DateAdapter())
     .build()
 
 private val retrofit = Retrofit.Builder()

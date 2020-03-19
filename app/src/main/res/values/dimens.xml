@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_base">16dp</dimen>
+    <dimen name="detail_sub_label_margin_top">4dp</dimen>
+    <dimen name="margin_base">16dp</dimen>
+    <dimen name="image_frame_layout_height">220dp</dimen>
+    <dimen name="image_title_size">20sp</dimen>
+    <dimen name="guidline_constraint_begin">320dp</dimen>
+    <dimen name="list_value_text_size">16sp</dimen>
+    <dimen name="list_value_text_margin_top">8dp</dimen>
+    <dimen name="list_label_text_size">18sp</dimen>
+    <dimen name="list_label_text_margin_top">4dp</dimen>
+</resources>

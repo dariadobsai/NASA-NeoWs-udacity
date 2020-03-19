@@ -21,8 +21,9 @@
     <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
     <string name="desc_picture_of_the_day">Astronomy Picture of the Day</string>
     <string name="desc_asteroid_status">Asteroid status</string>
-    <string name="desc_img_asteroid_status_hazardous">Hazardous asteroid image</string>
-    <string name="desc_img_asteroid_status_not_hazardous">Not hazardous asteroid image</string>
+    <string name="desc_img_asteroid_status_hazardous">Hazardous asteroid</string>
+    <string name="desc_img_asteroid_status_not_hazardous">Not hazardous asteroid</string>
     <string name="snackbar_is_online">Internet available</string>
     <string name="snackbar_is_not_online">No Internet connection</string>
+    <string name="desc_help_button">click to view astronomical unit explanation dialog</string>
 </resources>
