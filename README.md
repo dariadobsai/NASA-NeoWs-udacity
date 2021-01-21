@@ -6,7 +6,7 @@ by Google](https://www.udacity.com/course/advanced-android-with-kotlin--ud940) c
 
 ### Project summarized tasks on the course
 
-The application:
+The application must:
 
 - Include Main screen with a list of clickable asteroids as seen in the provided design using a RecyclerView with its adapter. You could insert some fake manually created asteroids to try this before downloading any data.
 - Include a Details screen that displays the selected asteroid data once it’s clicked in the Main screen as seen in the provided design. The images in the details screen are going to be provided with the starter code: an image for a potentially hazardous asteroid and another one for the non-hazardous ones, you have to display the correct image depending on the isPotentiallyHazardous asteroid parameter. Navigation xml file is already included with starter code.
