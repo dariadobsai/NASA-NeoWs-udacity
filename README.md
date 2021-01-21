@@ -4,7 +4,7 @@ by Google](https://www.udacity.com/course/advanced-android-with-kotlin--ud940) c
 [Starter code](https://github.com/udacity/nd940-android-kotlin-c2-starter/tree/master/starter) of the project can be found on [Udacity Github](https://github.com/udacity) page.
 
 
-### Project summarized tasks on the course
+### Project summarized tasks
 
 The application must:
 
