@@ -24,5 +24,4 @@
             android:name="asteroid"
             app:argType="com.example.nasa_nws_dk.models.Asteroid" />
     </fragment>
-
 </navigation>

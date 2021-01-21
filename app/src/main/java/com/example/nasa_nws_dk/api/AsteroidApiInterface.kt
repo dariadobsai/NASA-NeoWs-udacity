@@ -27,8 +27,7 @@ interface AsteroidApiInterface {
 
     @GET(APOD_URL)
     fun getPictureOfTheDay(
-        @Query("api_key") apiKey: String
-    ): Deferred<PictureOfDay>
+        @Query("api_key") apiKey: String): Deferred<PictureOfDay>
 }
 
 private val moshi = Moshi.Builder()

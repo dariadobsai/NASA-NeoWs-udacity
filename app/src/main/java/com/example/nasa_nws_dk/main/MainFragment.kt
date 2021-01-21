@@ -19,7 +19,6 @@ class MainFragment : Fragment(), AsteroidsAdapter.ClickListener {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var asteroidsAdapter: AsteroidsAdapter
-    //private lateinit var menu: Menu
 
     private val mainViewModel: MainViewModel by lazy {
         val activity = requireNotNull(this.activity)
